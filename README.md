@@ -7,9 +7,13 @@ Group Members
 Name	PRN
 
 Shreyasi Bidkar	202301040042
+
 Nikita Bansod	  202301040110
-Shravni Karhale	202301040139
+
+Shravani Karhale	202301040139
+
 Nishi Agarwal  	202301040219
+
 
 
 Project Overview
@@ -19,6 +23,7 @@ The model is trained on Shakespeare’s Complete Works dataset and predicts the 
 
 The system is deployed using FastAPI, enabling real-time predictions via REST API.
 
+
 Objectives
 Build an LSTM-based next-word prediction model
 Train the model on Shakespeare dataset
@@ -26,11 +31,14 @@ Perform sequence learning using NLP techniques
 Deploy the model using FastAPI
 Create a complete end-to-end AI system
 
+
 Dataset
 Field	Details
 Dataset Name	Shakespeare Complete Works
 Source	Project Gutenberg
 Link	https: https://www.kaggle.com/datasets/kingburrito666/shakespeare-plays?resource=download
+
+
 
 Size	~5.5 MB
 Content	Plays + Sonnets
@@ -49,11 +57,12 @@ lstm-text-prediction/
 ├── training_curves.png
 └── README.md
 
+
+
  LSTM Mathematical Model
 ​ 1.Forget Gate
 ft​=σ(Wf​⋅[ht−1​,xt​]+bf​
  Function
-
 Determines which information from the previous cell state (Cₜ₋₁) should be removed.
 
 How it Works
@@ -63,6 +72,7 @@ and current input x t
 Passes through a sigmoid function (0 to 1)
 0 → completely forget
 1 → completely keep
+
 
 2.Input Gate
 it​=σ(Wi​[ht−1​,xt​]+bi​)
@@ -74,6 +84,7 @@ Adds new relevant information to the cell state.
 Explanation:
 The input gate selects useful information from the current input and prepares it to be stored.
 
+
 3.Cell State Update
 Ct​=ft​⊙Ct−1​+it​⊙C~t​
 Purpose:
@@ -81,6 +92,7 @@ Updates the long-term memory of the network.
 
 Explanation:
 Combines previous memory and new information to form updated memory
+
 
 4.Output Gate
 t​=σ(Wo​[ht−1​,xt​]+bo​)
