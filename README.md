@@ -32,7 +32,7 @@ Link	https: https://www.kaggle.com/datasets/kingburrito666/shakespeare-plays?res
 
 Size	~5.5 MB
 Content	Plays + Sonnets
-🏗️ Project Structure
+ Project Structure
 lstm-text-prediction/
 │
 ├── model/
@@ -46,115 +46,52 @@ lstm-text-prediction/
 ├── requirements.txt
 ├── training_curves.png
 └── README.md
+
  LSTM Mathematical Model
-🔹 Gates
-Forget Gate:
-f
-t
-	​
+​ 1.Forget Gate
+ft​=σ(Wf​⋅[ht−1​,xt​]+bf​
+ Function
 
-=σ(W
-f
-	​
+Determines which information from the previous cell state (Cₜ₋₁) should be removed.
 
-[h
+How it Works
+Takes previous hidden state h
 t−1
-	​
+and current input x t
+Passes through a sigmoid function (0 to 1)
+0 → completely forget
+1 → completely keep
 
-,x
-t
-	​
+2.Input Gate
+it​=σ(Wi​[ht−1​,xt​]+bi​)
+C~t​=tanh(Wc​[ht−1​,xt​]+bc​)
 
-]+b
-f
-	​
+Purpose:
+Adds new relevant information to the cell state.
 
-)
-Input Gate:
-i
-t
-	​
+Explanation:
+The input gate selects useful information from the current input and prepares it to be stored.
 
-=σ(W
-i
-	​
+3.Cell State Update
+Ct​=ft​⊙Ct−1​+it​⊙C~t​
+Purpose:
+Updates the long-term memory of the network.
 
-[h
-t−1
-	​
+Explanation:
+Combines previous memory and new information to form updated memory
 
-,x
-t
-	​
+4.Output Gate
+t​=σ(Wo​[ht−1​,xt​]+bo​)
+ht​=ot​⊙tanh(Ct​)
 
-]+b
-i
-	​
+Purpose:
+Determines the output of the current time step.
 
-)
-Cell State:
-C
-t
-	​
-
-=f
-t
-	​
-
-⊙C
-t−1
-	​
-
-+i
-t
-	​
-
-⊙
-C
-~
-t
-	​
-
-Output Gate:
-o
-t
-	​
-
-=σ(W
-o
-	​
-
-[h
-t−1
-	​
-
-,x
-t
-	​
-
-]+b
-o
-	​
-
-)
-Hidden State:
-h
-t
-	​
-
-=o
-t
-	​
-
-⊙tanh(C
-t
-	​
-
-)
- Concept
+Explanation:
+Controls which information from the cell state is sent as output.
 Cell State (Cₜ): Long-term memory
 Hidden State (hₜ): Short-term output
- Model Architecture
+Model Architecture
 Embedding Layer (100)
         ↓
 LSTM (150 units)
@@ -168,7 +105,7 @@ Dense (Softmax)
 Training Configuration
 Parameter	Value
 Optimizer	Adam
-Loss	Sparse Categorical Crossentropy
-Epochs	50
+Loss	   Sparse Categorical Crossentropy
+Epochs	   50
 Batch Size	64
 Validation Split	0.1
