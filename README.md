@@ -5,10 +5,12 @@ Project Title	LSTM-Based Sequence Prediction System
 Submission Date	April 2026
 Group Members
 Name	PRN
+
 Shreyasi Bidkar	202301040042
 Nikita Bansod	  202301040110
 Shravni Karhale	202301040139
 Nishi Agarwal  	202301040219
+
 
 Project Overview
 
